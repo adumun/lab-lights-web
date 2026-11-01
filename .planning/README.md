@@ -1,3 +1,8 @@
+> **LEGADO HISTÓRICO / SOLO LECTURA — LAB-6**
+> Este directorio conserva el sistema anterior del plugin Claude Planning, previo a Shipping Mode. El contenido que sigue (reglas, bypasses, estados e índices incluidos) es evidencia histórica y no gobierna trabajo nuevo. No se repara, migra, sincroniza ni elimina sin una decisión separada. La planificación vigente reside en Jira LAB y la implementación en GitHub Issue/PR; consulta [AGENTS.md](../AGENTS.md). Shipping Mode es opcional; este archivo no acredita su instalación.
+
+---
+
 # 📋 Planning
 
 Central directory for all project plannings. Every planning follows a three-phase lifecycle and maintains its own term traceability matrix.
