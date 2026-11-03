@@ -38,8 +38,13 @@ No se requieren credenciales ni `.env` para el desarrollo con mocks. [.env.examp
 | `npm run test` | Ejecuta Vitest una vez. |
 | `npm run test:watch` | Ejecuta Vitest en modo interactivo. |
 | `npm run build` | Comprueba TypeScript y genera el build Vite en `dist/`. |
+| `make verify` | Ejecuta lint, typecheck, test y build localmente, deteniéndose ante el primer fallo. |
+| `make create-pr` | Verifica el cambio, publica la rama configurada y prepara un PR borrador mediante GitHub CLI. |
 
 Antes de presentar un cambio ejecuta lint, typecheck, test y build, como CI. Para una contribución pequeña, comprueba también el comportamiento afectado y registra comandos, resultados y limitaciones reales en el PR. Los cambios documentales requieren revisar rutas, enlaces y coherencia con los scripts; no agregues pruebas que solo reproduzcan el texto. Un fallo existente se registra y se vincula a su Jira correspondiente; no se corrige fuera del alcance autorizado.
+
+
+Para presentar un PR desde una rama autorizada instala **GNU Make** y [GitHub CLI](https://cli.github.com/), autentícate con `gh auth login` y comprueba que el árbol Git esté limpio. Usa el nombre `<tipo>/<JIRA-KEY>-gh<N>-<slug>` con el Issue GitHub real; ejecuta `make create-pr`. Este comando exige referencia Jira/Issue en el último commit, valida localmente con `make verify`, publica sin force push y abre un editor para completar un **PR borrador** dirigido a `master`. Si trabajas en un fork, configúralo como remoto Git y utiliza `PR_REMOTE=fork make create-pr` (sustituye `fork` por el nombre configurado). Si el comando falla, corrige el problema y vuelve a ejecutarlo; una validación local no es un check alojado ni reemplaza la aprobación del mentor. En Windows, instala GNU Make además de Node.js 24 y GitHub CLI.
 
 ## Autoridad y flujo de trabajo
 
