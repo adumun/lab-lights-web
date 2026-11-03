@@ -26,4 +26,14 @@ export default tseslint.config(
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     },
   },
+  {
+    // Node.js tooling is plain JavaScript: lint it without TS project services.
+    // Keep the recommended non-type-aware rules enabled (not ignored).
+    ...tseslint.configs.disableTypeChecked,
+    files: ['scripts/**/*.mjs'],
+    languageOptions: {
+      parserOptions: { project: false, projectService: false },
+      globals: globals.node,
+    },
+  },
 );
