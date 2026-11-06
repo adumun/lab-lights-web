@@ -50,7 +50,7 @@ En esta ruta puedes comenzar con una copia limpia, sin crear un archivo `.env` n
 1. Espera a que la secuencia de inicio muestre **TOCA PARA CONTINUAR** y haz clic o toca la pantalla.
 2. En la portada de **Luces del Laboratorio**, elige **Classic 3×3**. Debes ver nueve salas.
 3. Haz clic o toca una sala. Deben cambiar de estado esa sala y sus vecinas inmediatas arriba, abajo, a la izquierda y a la derecha, cuando existan. Las diagonales quedan fuera. Intenta apagar las nueve luces. Si quieres volver al estado inicial, pulsa el icono de pausa y elige **Reiniciar tablero**.
-4. Al ganar, aparece **Luces apagadas**. Si quieres comprobar el guardado, elige **Registrar iniciales**, selecciona tres letras, pulsa **Grabar resultado** y luego **Ver ranking**. Busca tus iniciales en **Mejores registros**.
+4. Al ganar, aparece **Luces apagadas**. Para comprobar el guardado de una partida verificada y sin ayudas, elige **Registrar iniciales**, selecciona tres letras, pulsa **Grabar resultado** y luego **Ver ranking**. Busca tus iniciales en **Mejores registros**. Si la partida no califica para el ranking, verás un aviso en la pantalla de resultado.
 
 La aplicación guarda datos como partidas y ajustes en el almacenamiento local del navegador. Para volver a consultar tus registros, usa el mismo navegador, perfil y URL, incluido el puerto. Para probar desde cero sin perder datos de tu perfil habitual, abre la URL en otro perfil del navegador.
 
