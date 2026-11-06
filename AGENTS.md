@@ -12,37 +12,11 @@ Este repositorio contiene una aplicación web ejecutable con React 19, TypeScrip
 - Las pruebas `*.test.ts` están junto al código; [vite.config.ts](vite.config.ts) configura Vitest con jsdom y [vitest.setup.ts](vitest.setup.ts) carga sus extensiones. Playwright y una suite e2e no están configurados.
 - [public/](public/) contiene activos estáticos, incluido el worker generado de MSW.
 
-## Instalación y desarrollo
+## Instalación y verificación local
 
-Usa Git, Node.js 24 y npm, alineados con [CI](.github/workflows/deploy-pages.yml). Desde una copia nueva:
+Sigue la [guía de arranque local](docs/START-HERE.md) para instalar, ejecutar y verificar el proyecto. El hook de pre-commit ejecuta lint y typecheck. Antes de presentar una contribución, completa las cuatro verificaciones de la guía y comprueba el comportamiento afectado.
 
-```sh
-git clone https://github.com/adumun/lab-lights-web.git
-cd lab-lights-web
-npm ci
-npm run dev
-```
-
-Abre la URL local que informe Vite. `npm ci` utiliza `package-lock.json`; su script `prepare` configura los hooks de Git en `.githooks/`. El hook de pre-commit ejecuta lint y typecheck; no reemplaza las demás verificaciones.
-
-No se requieren credenciales ni `.env` para el desarrollo con mocks. [.env.example](.env.example) contiene `VITE_APP_NAME`. En desarrollo, si `VITE_API_URL` no está definido, [src/app/main.tsx](src/app/main.tsx) inicia MSW para interceptar las llamadas a `/v1`. Para trabajar con un backend real, configura su URL base en `VITE_API_URL` dentro de `.env.local` y reinicia Vite. Las variables `VITE_*` son públicas en el navegador: nunca contienen secretos. El build de producción no inicia MSW; sus funciones online requieren una API disponible. `BASE_PATH` configura la base de Vite; CI usa `/lab-lights-web/` para GitHub Pages.
-
-## Comandos efectivos y verificación
-
-| Comando | Resultado |
-| --- | --- |
-| `npm ci` | Instala las dependencias fijadas y configura los hooks. |
-| `npm run dev` | Inicia el servidor de desarrollo Vite. |
-| `npm run lint` | Ejecuta ESLint sobre el repositorio. |
-| `npm run typecheck` | Ejecuta `tsc -b --pretty false`. |
-| `npm run test` | Ejecuta Vitest una vez. |
-| `npm run test:watch` | Ejecuta Vitest en modo interactivo. |
-| `npm run build` | Comprueba TypeScript y genera el build Vite en `dist/`. |
-| `make verify` | Ejecuta lint, typecheck, test y build localmente, deteniéndose ante el primer fallo. |
-| `make create-pr` | Verifica el cambio, publica la rama configurada y prepara un PR borrador mediante GitHub CLI. |
-
-Antes de presentar un cambio ejecuta lint, typecheck, test y build, como CI. Para una contribución pequeña, comprueba también el comportamiento afectado y registra comandos, resultados y limitaciones reales en el PR. Los cambios documentales requieren revisar rutas, enlaces y coherencia con los scripts; no agregues pruebas que solo reproduzcan el texto. Un fallo existente se registra y se vincula a su Jira correspondiente; no se corrige fuera del alcance autorizado.
-
+Registra comandos, resultados y limitaciones reales en el PR. En cambios documentales, revisa rutas, enlaces y coherencia con los scripts. Registra y vincula a Jira los fallos preexistentes para que se atiendan dentro de su alcance.
 
 Para presentar un PR desde una rama autorizada instala **GNU Make** y [GitHub CLI](https://cli.github.com/), autentícate con `gh auth login` y comprueba que el árbol Git esté limpio. Usa el nombre `<tipo>/<JIRA-KEY>-gh<N>-<slug>` con el Issue GitHub real; ejecuta `make create-pr`. Este comando exige referencia Jira/Issue en el último commit, valida localmente con `make verify`, publica sin force push y abre un editor para completar un **PR borrador** dirigido a `master`. Si trabajas en un fork, configúralo como remoto Git y utiliza `PR_REMOTE=fork make create-pr` (sustituye `fork` por el nombre configurado). Si el comando falla, corrige el problema y vuelve a ejecutarlo; una validación local no es un check alojado ni reemplaza la aprobación del mentor. En Windows, instala GNU Make además de Node.js 24 y GitHub CLI.
 
